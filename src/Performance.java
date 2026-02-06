@@ -3,6 +3,7 @@ import java.util.*;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.LogarithmicAxis;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import javax.swing.JFrame;
@@ -58,7 +59,7 @@ public class Performance {
                     
                     double avgTimeK = totalTimeK / iterations;
                     
-                    pw.printf("K-sorted Data: Sorted %d elements in %.2f ms (avg)%n", size, avgTimeK);
+                    //pw.printf("K-sorted Data: Sorted %d elements in %.2f ms (avg)%n", size, avgTimeK);
 
                     kSeries.add(size,avgTimeK);
 
@@ -93,7 +94,7 @@ public class Performance {
         );
 
         //Logarithmic axis to handle the large differences
-        //chart.getXYPlot().setRangeAxis(new LogarithmicAxis("Average Time (ms)"));
+        chart.getXYPlot().setRangeAxis(new LogarithmicAxis("Average Time (ms)"));
 
         JFrame frame = new JFrame("Sorting Performance Chart");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
